@@ -58,33 +58,18 @@ const DeleteButton = styled(Button)`
   color: #aaa;
 `;
 
-const CartListItem = () => {
+const CartListItem = ({ item }) => {
   return (
     <>
       <Item>
-        <p>상품1</p>
+        <p>{item.name}</p>
         <Goods>
-          <span style={{ fontSize: "50px" }}>🍩</span>
+          <span style={{ fontSize: "50px" }}>{item.product}</span>
           <Price>
-            <Selling>3000</Selling>
+            <Selling>{item.price}</Selling>
             <CountWrap>
               <Button>−</Button>
-              <Count value="1" readOnly />
-              <Button>+</Button>
-            </CountWrap>
-          </Price>
-        </Goods>
-        <DeleteButton>✕</DeleteButton>
-      </Item>
-      <Item>
-        <p>상품1</p>
-        <Goods>
-          <span style={{ fontSize: "50px" }}>🍩</span>
-          <Price>
-            <Selling>3000</Selling>
-            <CountWrap>
-              <Button>−</Button>
-              <Count value="1" readOnly />
+              <Count value={item.count} readOnly />
               <Button>+</Button>
             </CountWrap>
           </Price>

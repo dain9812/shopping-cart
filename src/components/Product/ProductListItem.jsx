@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { addItem } from "../../store/cartSlice";
 
 const Item = styled.li`
   width: 25%;
@@ -44,12 +46,19 @@ const Button = styled.button`
 `;
 
 const ProductListItem = ({ item, setOpen }) => {
+  const dispatch = useDispatch();
+
+  const handleAddItem = () => {
+    dispatch(addItem(item));
+    setOpen(true);
+  };
+
   return (
     <Item>
       <Name>{item.name}</Name>
       <Product>{item.product}</Product>
       <Price>{item.price}</Price>
-      <Button onClick={() => setOpen(true)}>카트에 담기</Button>
+      <Button onClick={handleAddItem}>카트에 담기</Button>
     </Item>
   );
 };

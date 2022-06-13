@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import CartListItem from "./CartListItem";
 
@@ -46,6 +48,14 @@ const ListUl = styled.ul`
 `;
 
 const CartList = ({ open, setOpen }) => {
+  const list = useSelector((state) => state.cart.list);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    setItems(list);
+    console.log(list);
+  }, [list]);
+
   return (
     <Cart className={open ? "open" : ""}>
       <CloseBtn className={open ? "open" : ""} onClick={() => setOpen(false)}>
@@ -54,7 +64,9 @@ const CartList = ({ open, setOpen }) => {
       <Inner>
         <Title>Cart</Title>
         <ListUl>
-          <CartListItem />
+          {items.map((item) => (
+            <CartListItem item={item} key={item.id} />
+          ))}
         </ListUl>
       </Inner>
     </Cart>
