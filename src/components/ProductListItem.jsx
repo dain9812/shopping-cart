@@ -29,6 +29,15 @@ const Product = styled.span`
 
 const Price = styled.span`
   font-size: 17px;
+  padding-bottom: 10px;
+`;
+
+const Button = styled.button`
+  cursor: pointer;
+  background: #eee;
+  border: 1px solid #aaa;
+  padding: 10px 20px;
+  border-radius: 5px;
 `;
 
 const ProductListItem = ({ item }) => {
@@ -37,6 +46,7 @@ const ProductListItem = ({ item }) => {
       <Name>{item.name}</Name>
       <Product>{item.product}</Product>
       <Price>{item.price}</Price>
+      <Button>카트에 담기</Button>
     </Item>
   );
 };
