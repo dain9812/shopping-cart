@@ -63,7 +63,7 @@ const ListUl = styled.ul`
   padding-top: 100px;
 `;
 
-const ProductList = () => {
+const ProductList = ({ setOpen }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const ProductList = () => {
         <ListUl>
           {products &&
             products.map((item) => (
-              <ProductListItem key={item.id} item={item}>
+              <ProductListItem key={item.id} item={item} setOpen={setOpen}>
                 {item.name}
               </ProductListItem>
             ))}

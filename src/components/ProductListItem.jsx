@@ -9,7 +9,6 @@ const Item = styled.li`
   align-items: center;
   min-height: 100px;
   box-sizing: border-box;
-  cursor: pointer;
   padding: 20px 0;
   &:hover {
     background: #eee;
@@ -38,15 +37,19 @@ const Button = styled.button`
   border: 1px solid #aaa;
   padding: 10px 20px;
   border-radius: 5px;
+  &:hover {
+    background: #333;
+    color: #fff;
+  }
 `;
 
-const ProductListItem = ({ item }) => {
+const ProductListItem = ({ item, setOpen }) => {
   return (
     <Item>
       <Name>{item.name}</Name>
       <Product>{item.product}</Product>
       <Price>{item.price}</Price>
-      <Button>카트에 담기</Button>
+      <Button onClick={() => setOpen(true)}>카트에 담기</Button>
     </Item>
   );
 };
