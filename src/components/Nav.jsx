@@ -12,8 +12,8 @@ const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  height: 60px;
+  padding: 0 30px;
+  height: 80px;
 `;
 
 const Logo = styled.h1`
@@ -27,12 +27,12 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Nav = () => {
+const Nav = ({ setOpen }) => {
   return (
     <Container>
       <Inner>
         <Logo>Shop</Logo>
-        <Button>🛒</Button>
+        <Button onClick={() => setOpen(true)}>🛒</Button>
       </Inner>
     </Container>
   );

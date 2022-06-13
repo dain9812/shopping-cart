@@ -1,24 +1,18 @@
 import { useState } from "react";
-import CartList from "./components/CartList";
+import CartList from "./components/Cart/CartList";
 import Nav from "./components/Nav";
-import ProductList from "./components/ProductList";
-import Shadow from "./components/Shadow";
+import ProductList from "./components/Product/ProductList";
+import Shadow from "./components/Cart/Shadow";
 
 const App = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Nav />
+      <Nav setOpen={setOpen} />
       <ProductList setOpen={setOpen} />
-      {open ? (
-        <>
-          <CartList open={open} />
-          <Shadow setOpen={setOpen} />
-        </>
-      ) : (
-        ""
-      )}
+      <CartList open={open} setOpen={setOpen} />
+      <Shadow open={open} setOpen={setOpen} />
     </>
   );
 };
