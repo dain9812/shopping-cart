@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { addItem } from "../../store/cartSlice";
@@ -48,10 +48,10 @@ const Button = styled.button`
 const ProductListItem = ({ item, setOpen }) => {
   const dispatch = useDispatch();
 
-  const handleAddItem = () => {
+  const handleAddItem = useCallback(() => {
     dispatch(addItem(item));
     setOpen(true);
-  };
+  }, [dispatch, item, setOpen]);
 
   return (
     <Item>

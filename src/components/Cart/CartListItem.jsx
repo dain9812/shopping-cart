@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { addItem, clearItem, removeItem } from "../../store/cartSlice";
 
 const Item = styled.li`
   position: relative;
@@ -49,6 +51,7 @@ const Button = styled.button`
   border: none;
   font-size: 16px;
   width: 30px;
+  cursor: ${(props) => (props.disabled ? "" : "pointer")};
 `;
 
 const DeleteButton = styled(Button)`
@@ -59,6 +62,20 @@ const DeleteButton = styled(Button)`
 `;
 
 const CartListItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleAddItem = useCallback(() => {
+    dispatch(addItem(item));
+  }, [dispatch, item]);
+
+  const handleRemoveItem = useCallback(() => {
+    dispatch(removeItem(item));
+  }, [dispatch, item]);
+
+  const handleClearItem = useCallback(() => {
+    dispatch(clearItem(item));
+  }, [dispatch, item]);
+
   return (
     <>
       <Item>
@@ -68,13 +85,18 @@ const CartListItem = ({ item }) => {
           <Price>
             <Selling>{item.price}</Selling>
             <CountWrap>
-              <Button>−</Button>
+              <Button
+                onClick={handleRemoveItem}
+                disabled={item.count === 1 ? true : false}
+              >
+                −
+              </Button>
               <Count value={item.count} readOnly />
-              <Button>+</Button>
+              <Button onClick={handleAddItem}>+</Button>
             </CountWrap>
           </Price>
         </Goods>
-        <DeleteButton>✕</DeleteButton>
+        <DeleteButton onClick={handleClearItem}>✕</DeleteButton>
       </Item>
     </>
   );

@@ -22,9 +22,24 @@ export const cartSlice = createSlice({
         state.list.push({ ...action.payload, count: 1 });
       }
     },
+    removeItem: (state, action) => {
+      const existItemIndex = state.list.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      state.list[existItemIndex] = {
+        ...state.list[existItemIndex],
+        count: state.list[existItemIndex].count - 1,
+      };
+    },
+    clearItem: (state, action) => {
+      state.list = [
+        ...state.list.filter((item) => item.id !== action.payload.id),
+      ];
+    },
   },
 });
 
-export const { addItem } = cartSlice.actions;
+export const { addItem, removeItem, clearItem } = cartSlice.actions;
 
 export default cartSlice.reducer;
