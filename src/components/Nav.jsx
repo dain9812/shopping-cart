@@ -5,6 +5,7 @@ const Container = styled.nav`
   position: fixed;
   left: 0;
   right: 0;
+  top: 0;
 `;
 
 const Inner = styled.div`
@@ -12,6 +13,7 @@ const Inner = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  height: 60px;
 `;
 
 const Logo = styled.h1`
