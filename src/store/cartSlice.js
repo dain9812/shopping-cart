@@ -38,7 +38,6 @@ export const cartSlice = createSlice({
         ...state.list.filter((item) => item.id !== action.payload.id),
       ];
     },
-<<<<<<< HEAD
     calculateTotalPrice: (state) => {
       const initialPrice = 0;
       const price = state.list.reduce(
@@ -52,11 +51,5 @@ export const cartSlice = createSlice({
 
 export const { addItem, removeItem, clearItem, calculateTotalPrice } =
   cartSlice.actions;
-=======
-  },
-});
-
-export const { addItem, removeItem, clearItem } = cartSlice.actions;
->>>>>>> refs/remotes/origin/main
 
 export default cartSlice.reducer;
