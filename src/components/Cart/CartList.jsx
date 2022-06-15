@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
@@ -85,9 +85,12 @@ const CartList = ({ open, setOpen }) => {
   const { list, totalPrice } = useSelector((state) => state.cart);
   const [items, setItems] = useState([]);
 
+  const handleSubmit = useCallback(() => {
+    localStorage.setItem("cart", JSON.stringify(items));
+  }, [items]);
+
   useEffect(() => {
     setItems(list);
-    console.log(list);
   }, [list]);
 
   useEffect(() => {
@@ -116,7 +119,7 @@ const CartList = ({ open, setOpen }) => {
               <Num>{totalPrice}</Num> 원
             </span>
           </TotalPrice>
-          <SubmitButton>결제하기</SubmitButton>
+          <SubmitButton onClick={handleSubmit}>결제하기</SubmitButton>
         </Result>
       </Inner>
     </Cart>
