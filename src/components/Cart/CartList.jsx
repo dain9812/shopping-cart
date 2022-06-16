@@ -87,7 +87,6 @@ const CartList = ({ open, setOpen }) => {
 
   const handleSubmit = useCallback(() => {
     alert("주문이 완료되었습니다!");
-    localStorage.clear();
     dispatch(clearAllItem());
     setOpen(false);
   }, [setOpen, dispatch]);

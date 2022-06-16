@@ -31,7 +31,7 @@ const Nav = ({ setOpen }) => {
   return (
     <Container>
       <Inner>
-        <Logo>Shop</Logo>
+        <Logo>Menu</Logo>
         <Button onClick={() => setOpen(true)}>🛒</Button>
       </Inner>
     </Container>

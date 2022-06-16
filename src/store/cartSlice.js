@@ -34,6 +34,8 @@ export const cartSlice = createSlice({
       } else {
         state.list.push({ ...action.payload, count: 1 });
       }
+
+      localStorage.setItem("cart", JSON.stringify(state.list));
     },
     removeItem: (state, action) => {
       const existItemIndex = state.list.findIndex(
@@ -44,14 +46,20 @@ export const cartSlice = createSlice({
         ...state.list[existItemIndex],
         count: state.list[existItemIndex].count - 1,
       };
+
+      localStorage.setItem("cart", JSON.stringify(state.list));
     },
     clearItem: (state, action) => {
       state.list = [
         ...state.list.filter((item) => item.id !== action.payload.id),
       ];
+
+      localStorage.setItem("cart", JSON.stringify(state.list));
     },
     clearAllItem: (state) => {
       state.list = [];
+
+      localStorage.clear("cart");
     },
     calculateTotalPrice: (state) => {
       const initialPrice = 0;
