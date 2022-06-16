@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { calculateTotalPrice } from "../../store/cartSlice";
+import { calculateTotalPrice, clearAllItem } from "../../store/cartSlice";
 import CartListItem from "./CartListItem";
 
 const Cart = styled.div`
@@ -86,8 +86,11 @@ const CartList = ({ open, setOpen }) => {
   const [items, setItems] = useState([]);
 
   const handleSubmit = useCallback(() => {
-    localStorage.setItem("cart", JSON.stringify(items));
-  }, [items]);
+    alert("주문이 완료되었습니다!");
+    localStorage.clear();
+    dispatch(clearAllItem());
+    setOpen(false);
+  }, [setOpen, dispatch]);
 
   useEffect(() => {
     setItems(list);
@@ -119,7 +122,7 @@ const CartList = ({ open, setOpen }) => {
               <Num>{totalPrice}</Num> 원
             </span>
           </TotalPrice>
-          <SubmitButton onClick={handleSubmit}>결제하기</SubmitButton>
+          <SubmitButton onClick={handleSubmit}>주문하기</SubmitButton>
         </Result>
       </Inner>
     </Cart>
