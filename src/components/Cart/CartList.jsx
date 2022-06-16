@@ -39,6 +39,13 @@ const CloseButton = styled(Button)`
   }
 `;
 
+const ClearButton = styled(Button)`
+  color: #df0000;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 20px;
+`;
+
 const SubmitButton = styled(Button)`
   width: 100%;
   padding: 10px 20px;
@@ -92,6 +99,10 @@ const CartList = ({ open, setOpen }) => {
     setOpen(false);
   }, [setOpen, dispatch]);
 
+  const handleClearCart = useCallback(() => {
+    dispatch(clearAllItem());
+  }, [dispatch]);
+
   useEffect(() => {
     setItems(list);
   }, [list]);
@@ -111,6 +122,7 @@ const CartList = ({ open, setOpen }) => {
       <Inner>
         <Title>Cart</Title>
         <ListUl>
+          <ClearButton onClick={handleClearCart}>전체 삭제하기</ClearButton>
           {items.length > 0
             ? items.map((item) => <CartListItem item={item} key={item.id} />)
             : "카트에 담긴 상품이 없습니다"}
