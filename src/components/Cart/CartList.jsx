@@ -47,6 +47,7 @@ const SubmitButton = styled(Button)`
   margin-top: 20px;
   background: #3953ff;
   color: #fff;
+  font-size: 18px;
 `;
 
 const Inner = styled.div`

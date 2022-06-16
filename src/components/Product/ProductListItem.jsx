@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { addItem } from "../../store/cartSlice";
 
 const Item = styled.li`
-  width: 25%;
+  width: 18%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,8 +12,20 @@ const Item = styled.li`
   min-height: 100px;
   box-sizing: border-box;
   padding: 20px 0;
+  margin: 20px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
   &:hover {
-    background: #eee;
+    border: 2px solid #3953ff;
+  }
+  @media screen and (max-width: 1300px) {
+    width: 20%;
+  }
+  @media screen and (max-width: 820px) {
+    width: 35%;
+  }
+  @media screen and (max-width: 450px) {
+    width: 100%;
   }
 `;
 
@@ -29,18 +41,19 @@ const Product = styled.span`
 `;
 
 const Price = styled.span`
-  font-size: 17px;
+  font-size: 18px;
   padding-bottom: 10px;
+  font-weight: bold;
 `;
 
 const Button = styled.button`
   cursor: pointer;
-  background: #eee;
+  background: #fff;
   border: 1px solid #aaa;
   padding: 10px 20px;
   border-radius: 5px;
   &:hover {
-    background: #333;
+    background: #3953ff;
     color: #fff;
   }
 `;

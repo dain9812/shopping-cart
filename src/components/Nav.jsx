@@ -14,6 +14,9 @@ const Inner = styled.div`
   align-items: center;
   padding: 0 30px;
   height: 80px;
+  background: #fff;
+  max-width: 1500px;
+  margin: 0 auto;
 `;
 
 const Logo = styled.h1`

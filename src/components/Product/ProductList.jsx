@@ -10,7 +10,13 @@ const Container = styled.div`
 const ListUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   padding-top: 100px;
+  max-width: 1500px;
+  margin: 0 auto;
+  @media screen and (max-width: 820px) {
+    padding: 100px 0 50px;
+  }
 `;
 
 const ProductList = ({ setOpen }) => {
